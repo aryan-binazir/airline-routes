@@ -1,8 +1,9 @@
 import React from "react";
 
 const Table = ({ data }) => {
-
+  console.log(data)
   return (
+    <table>
       <tbody>
         <tr>
             <th>Airline</th>
@@ -10,13 +11,14 @@ const Table = ({ data }) => {
             <th>Destination Airport</th>
         </tr>
         {data.routes.map((row, i) => (
-            <tr key={i}>
-                <td>{row.airline}</td>
-                <td>{row.src}</td>
-                <td>{row.dest}</td>
-            </tr>
+          <tr key={i}>
+              <td>{data.getAirlineById(row.airline)}</td>
+              <td>{data.getAirportByCode(row.src)}</td>
+              <td>{data.getAirportByCode(row.dest)}</td>
+          </tr>
         ))}
-    </tbody>
+      </tbody>
+    </table>
   )
 }
 
