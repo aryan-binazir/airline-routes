@@ -9,9 +9,13 @@ const columns = [
   {name: 'Destination Airport', property: 'dest'},
 ];
 
-function formatValue(property, value) {
-  // return a string
-}
+const formatValue = (property, value) => {
+  if (property === "airline") {
+    return data.getAirlineById(value);
+  } else {
+    return data.getAirportByCode(value);
+  }
+};
 
 const App = () => (
   <div className="app">
