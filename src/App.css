@@ -70,8 +70,3 @@ svg circle.source {
   fill: lightgreen;
   r: 0.5;
 }
-
-td, th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}

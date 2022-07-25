@@ -1,20 +1,17 @@
 import React from "react";
 
-const Table = ({ data }) => {
-  console.log(data)
+const Table = ({ tableRows, className, columns }) => {
   return (
-    <table>
+    <table className={className}>
       <tbody>
         <tr>
-            <th>Airline</th>
-            <th>Source Airport</th>
-            <th>Destination Airport</th>
+          {columns.map((airport, i) => <th key={i}>{airport.name}</th>)}
         </tr>
-        {data.routes.map((row, i) => (
+        {tableRows.routes.map((row, i) => (
           <tr key={i}>
-              <td>{data.getAirlineById(row.airline)}</td>
-              <td>{data.getAirportByCode(row.src)}</td>
-              <td>{data.getAirportByCode(row.dest)}</td>
+              <td>{tableRows.getAirlineById(row.airline)}</td>
+              <td>{tableRows.getAirportByCode(row.src)}</td>
+              <td>{tableRows.getAirportByCode(row.dest)}</td>
           </tr>
         ))}
       </tbody>
