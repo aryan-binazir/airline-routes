@@ -22,7 +22,6 @@ const App = () => {
   function getAirports() {
     let airports = [];
     data.airports.forEach(({ name, code }) => airports.push({ name, code }));
-    console.log('airports', airports)
     return airports;
   };
 
@@ -44,6 +43,10 @@ const App = () => {
         return ((flight.src === code) || (flight.dest === code));
       }));
     }
+  }
+
+  function handleClear () {
+    setRows(data.routes)
   }
 
   const [rows, setRows] = useState(data.routes);
@@ -70,6 +73,7 @@ return (
       options={airports}
       filterOptions={filterAirports}
       />
+      <button onClick={handleClear}>Clear</button>
       <Table className = "routes-table"
       rows={rows}
       columns={columns}
