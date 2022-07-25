@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 
 
 
-const Select = ( { airlines, filterAirlines }) => {
+const Select = ( { options, filterOptions }) => {
   const handleChange = (event) => {
     event.preventDefault();
-    filterAirlines(event.target.value)
+    filterOptions(event.target.value);
   }
 
   return (
     <select name="airlines" id="airlineList" onChange={handleChange}>
       <p>Filter Airlines</p>
       <option key="all" value="all">All</option>
-      {airlines.map(airline => {
-        return <option key={airline.name} value={airline.id}>{airline.name}</option>
+      {options.map(option => {
+        let id = option.code || option.id;
+        return <option key={option.name} value={id}>{option.name}</option>
       })}
     </select>
   )
