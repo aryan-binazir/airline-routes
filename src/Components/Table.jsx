@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Table = ({ rows, columns, className, format, page, setPage }) => {
   const perPage = 25;

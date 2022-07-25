@@ -67,14 +67,16 @@ const App = () => {
     return true;
   }
 
-  const [rows, setRows] = useState(data.routes);
-  const [columns, setColumns] = useState([
+  const columns = [
     {name: 'Airline', property: 'airline'},
     {name: 'Source Airport', property: 'src'},
     {name: 'Destination Airport', property: 'dest'},
-  ]);
-  const [airlines, setAirlines] = useState(() => getAirlines());
-  const [airports, setAirports] = useState(() => getAirports());
+  ];
+
+  const [rows, setRows] = useState(data.routes);
+ 
+  const airlines = getAirlines();
+  const airports = getAirports();
   const [page, setPage] = useState(0);
 
 return (
