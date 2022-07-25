@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
-const Table = ({ tableRows, className, columns, format }) => {
+const Table = ({ rows, columns, className, format, page, setPage }) => {
   const perPage = 25;
-  const [page, setPage] = useState(0);
-  const start = page * perPage
+  
+  
+
+  const start = page * perPage;
   const nextPage = (event) => {
     event.preventDefault();
     setPage(page + 1);
@@ -18,7 +20,6 @@ const Table = ({ tableRows, className, columns, format }) => {
     return <th key={i}>{airport.name}</th>
   });
 
-  let rows = [...tableRows.routes]
   const bodyRows = rows.slice(start, start + perPage).map((row) => {
     const rows = columns.map((col) => {
       const value = row[col.property];
