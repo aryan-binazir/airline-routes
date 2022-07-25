@@ -46,7 +46,25 @@ const App = () => {
   }
 
   function handleClear () {
-    setRows(data.routes)
+    setRows(data.routes);
+  }
+
+  function airlineEnabled(id) {
+    for (let index = 0; index < rows.length; index += 1) {
+      if (rows[index].airline === id) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function airportEnabled(id) {
+    for (let index = 0; index < rows.length; index += 1) {
+      if (rows[index].src === id || rows[index].dest === id) {
+        return false;
+      }
+    }
+    return true;
   }
 
   const [rows, setRows] = useState(data.routes);
@@ -68,10 +86,12 @@ return (
       <Select 
       options={airlines}
       filterOptions={filterAirlines}
+      enabled={airlineEnabled}
       />
       <Select 
       options={airports}
       filterOptions={filterAirports}
+      enabled={airportEnabled}
       />
       <button onClick={handleClear}>Clear</button>
       <Table className = "routes-table"

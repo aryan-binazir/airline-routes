@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 
 
-const Select = ( { options, filterOptions }) => {
+const Select = ( { options, filterOptions, enabled }) => {
   const handleChange = (event) => {
     event.preventDefault();
     filterOptions(event.target.value);
@@ -14,7 +14,7 @@ const Select = ( { options, filterOptions }) => {
       <option key="all" value="all">All</option>
       {options.map(option => {
         let id = option.code || option.id;
-        return <option key={option.name} value={id}>{option.name}</option>
+        return <option key={option.name} value={id} disabled={!!enabled(id)}>{option.name}</option>
       })}
     </select>
   )
